@@ -1,7 +1,7 @@
 'use strict';
 const cl = console.log.bind(console);
 
-const body = document.getElementsByTagName('body');
+const body = document.querySelector('body');
 const message = document.querySelector('.message'),
    number = document.querySelector('.number'),
    score = document.querySelector('.score'),
@@ -10,11 +10,10 @@ const message = document.querySelector('.message'),
    guess = document.querySelector('.guess'),
    btnAgain = document.querySelector('.again');
 
-const secretNumber = Math.floor(Math.random() * 20) + 1
+let secretNumber = Math.floor(Math.random() * 20) + 1
 let userScore = 20;
 let userHighScore = 0;
 
-cl(secretNumber)
 check.addEventListener('click', () => {
    const inputNumber = Number(guess.value);
    let userMessage = ""
@@ -31,10 +30,17 @@ check.addEventListener('click', () => {
 
    /* Check Input */
    if (inputNumber === secretNumber) {
-      userMessage = '🎉 Well Done';
-      body[0].style.backgroundColor = '#21bd55';
+      message.innerHTML = '🎉 Well Done';
       number.style.width = '24rem';
+      
+      body.style.backgroundColor = '#21bd55';
       number.innerHTML = secretNumber.toString();
+      
+      if(userScore > userHighScore) {
+         userHighScore = userScore;
+         highScore.innerHTML = userScore.toString();
+      }
+
    }
    else if (inputNumber >= secretNumber - 2 && inputNumber <= secretNumber + 2) {
       userMessage = '😶 You are so close';
@@ -58,5 +64,13 @@ check.addEventListener('click', () => {
 })
 
 btnAgain.addEventListener('click', ()=> {
-   document.location.reload();
+   secretNumber = Math.floor(Math.random() * 20) + 1
+   userScore = 20;
+
+   message.innerHTML = 'Start guessing...';
+   number.innerHTML = '?';
+   score.innerHTML = '20';
+
+   body.style.backgroundColor = '#222';
+   number.style.width = '15rem';
 })
