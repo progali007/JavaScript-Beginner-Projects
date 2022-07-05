@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Modal window</title>
+  </head>
+  <body>
+    <button class="show__modal">Show modal 1</button>
+    <button class="show__modal">Show modal 2</button>
+    <button class="show__modal">Show modal 3</button>
+
+    <div class="modal hidden">
+      <button class="close__icon">&times;</button>
+      <h1>I'm Modal <span class="modal__index"></span> 😍</h1>
+      <p>
+        Click on <strong>close icon</strong> or on the <strong>Screen</strong> to close this model
+      </p>
+    </div>
+    <div class="overlay hidden"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
